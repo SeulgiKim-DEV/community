@@ -5,51 +5,56 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-public class userReqDto {
-    private userReqDto() { }
+public class UserResDto {
+    private UserResDto() { }
 
     @ToString
     @Getter
     @NoArgsConstructor
     public static class SingIn {
-        private String logInId;
-        private String password;
-
-        public In(String logInId, String password) {
-            this.logInId = logInId;
-            this.password = password;
-        }
-    }
-
-    @ToString
-    @Getter
-    @NoArgsConstructor
-    public static class SingOut {
         private Long memberId;
-
-        public Out(Long memberId) {
-            this.memberId = memberId;
-        }
-    }
-
-    @ToString
-    @Getter
-    @NoArgsConstructor
-    public static class SingUp {
         private String logInId;
-        private String password;
-        private String checkPassword;
         private String email;
         private String phoneNumber;
-        private String userName;
+        private int level;
+        private int point;
+        private String grade;
+        private String status;
 
-        public Up(String logInId, String password,String checkPassword, String email,String phoneNumber, String userName) {
+        public SingIn(Long memberId, String logInId, String email, String phoneNumber, int level, int point, String grade, String status) {
+            this.memberId = memberId;
             this.logInId = logInId;
-            this.password = password;
-            this.checkPassword = checkPassword;
             this.email = email;
             this.phoneNumber = phoneNumber;
-            this.userName = userName;
+            this.level = level;
+            this.point = point;
+            this.grade = grade;
+            this.status = status;
+        }
+    }
+
+    @ToString
+    @Getter
+    @NoArgsConstructor
+    public static class changePassword {
+        private Long memberId;
+        private String logInId;
+        private String email;
+        private String phoneNumber;
+        private int level;
+        private int point;
+        private String grade;
+        private String status;
+
+        public changePassword(Long memberId, String logInId, String email, String phoneNumber, int level, int point, String grade, String status) {
+            this.memberId = memberId;
+            this.logInId = logInId;
+            this.email = email;
+            this.phoneNumber = phoneNumber;
+            this.level = level;
+            this.point = point;
+            this.grade = grade;
+            this.status = status;
         }
     }
 

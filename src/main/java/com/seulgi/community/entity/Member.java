@@ -19,7 +19,7 @@ public class Member {
     private long id;
 
     @Column(name = "login_id", nullable = false, length = 20)
-    private String loginId;
+    private String logInId;
 
     @Column(name = "user_name", nullable = false, length = 15)
     private String userName;
@@ -61,7 +61,7 @@ public class Member {
 
     @Builder
     public Member(String loginId, String userName, String password, String email, String phoneNumber, String status) {
-        this.loginId = loginId;
+        this.logInId = loginId;
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -71,6 +71,11 @@ public class Member {
 
     public void updatedMemberInfo(String userName, String phoneNumber) {
         this.userName = userName;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void signOutMember(Long id) {
+        this.id = id;
         this.phoneNumber = phoneNumber;
     }
 
