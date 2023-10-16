@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: qwer12#$
+    url : jdbc:mysql://localhost:55555/community?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+

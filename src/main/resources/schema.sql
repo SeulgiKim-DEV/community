@@ -1,0 +1,2 @@
+--create table member
+--이런거 만들어주기
