@@ -1,3 +1,5 @@
+//CREATE DATABASE community;
+
 CREATE TABLE member (
   id BIGINT AUTO_INCREMENT NOT NULL,
    login_id VARCHAR(20) NOT NULL,

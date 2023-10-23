@@ -1,7 +1,6 @@
 package com.seulgi.community.controller;
 
-import com.seulgi.community.DTO.UserReqDto;
-import com.seulgi.community.DTO.UserResDto;
+import com.seulgi.community.DTO.UserModel;
 import com.seulgi.community.comm.ProjectVersion;
 import com.seulgi.community.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,31 +11,26 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(MemberController.URL.BASE)
+@RequestMapping(MemberController.BASE_URL)
 public class MemberController {
 
-    public static class URL {
-        public static final String BASE = ProjectVersion.VERSION + "/member";
-    }
+    public static final String BASE_URL = ProjectVersion.VERSION + "/member";
 
     private final MemberService memberService;
 
-    @PostMapping("/signIn")
-    public UserResDto.SingIn signIn(HttpServletRequest request, @RequestBody UserReqDto.SingIn req) {
-        try {
-            return memberService.signIn(req);
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
+    @PostMapping("/login")
+    public UserModel.logInResponse login(HttpServletRequest request, @RequestBody UserModel.logInRequest req){
+        return memberService.logIn(req);
     }
 
-    @DeleteMapping("/signOut")
-    public Object signOut(HttpServletRequest request, @RequestBody UserReqDto.SingOut req) {
-        try {
-            return memberService.signOut(req);
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
+    @DeleteMapping("/logOut")
+    public Object logOut(HttpServletRequest request, @RequestBody UserModel.logOutRequest req) {
+        return memberService.logOut(req);
+    }
+
+    @PostMapping("/signIn")
+    public UserModel.signInResponse signIn (HttpServletRequest request, @RequestBody UserModel.signUpRequest req) {
+        return memberService.signIn(req);
     }
 
 
