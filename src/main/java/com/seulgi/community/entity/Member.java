@@ -49,7 +49,6 @@ public class Member {
     private String status;
 
     @Column(name = "resign")
-    @ColumnDefault("false")
     private boolean resign;
 
     @Column(name = "created_at", updatable = false)
@@ -78,6 +77,12 @@ public class Member {
         this.id = id;
         this.phoneNumber = phoneNumber;
     }
+
+    public void changePassword(Long id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
 
     public void resignMember() {
         this.resign = true;

@@ -19,7 +19,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/login")
-    public UserModel.logInResponse login(HttpServletRequest request, @RequestBody UserModel.logInRequest req){
+    public UserModel.logInResponse login(HttpServletRequest request, @RequestBody UserModel.logInRequest req) {
         return memberService.logIn(req);
     }
 
@@ -28,10 +28,38 @@ public class MemberController {
         return memberService.logOut(req);
     }
 
-    @PostMapping("/signIn")
-    public UserModel.signInResponse signIn (HttpServletRequest request, @RequestBody UserModel.signUpRequest req) {
-        return memberService.signIn(req);
+    @PostMapping("/signUp")
+    public UserModel.signUpResponse signUp (HttpServletRequest request, @RequestBody UserModel.signUpRequest req) {
+        return memberService.signUp(req);
     }
+
+    @PutMapping("/helpAccount")
+    public UserModel.helpAccountResponse helpAccount (@RequestBody UserModel.helpAccountRequest req) {
+        return memberService.helpAccount(req);
+    }
+
+    @PatchMapping("/changePassword")
+    public void changePassword (@RequestBody UserModel.changePasswordRequest req) {
+        memberService.changePassword(req);
+    }
+
+    @DeleteMapping("/resign")
+    public void resign (@RequestBody UserModel.resignRequest req) {
+        memberService.resign(req);
+    }
+
+    //List로 가져오는거 물어보기
+    @GetMapping("/{memberId}")
+    public UserModel.searchMemberResponse searchMember (@PathVariable String logInId) {
+        return memberService.searchMember(logInId);
+    }
+
+    @PostMapping("/{memberId}")
+    public void modifyMemberInfo (@RequestBody UserModel.modifyMemberInfoRequest req, @PathVariable String logInId) {
+        memberService.modifyMemberInfo(req, logInId);
+    }
+
+
 
 
 }

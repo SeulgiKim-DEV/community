@@ -10,8 +10,11 @@ import java.util.Optional;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    @Override
     Optional<Member> findById(Long id);
 
     Optional<Member> findByLogInIdAndPassword(String logInId, String password);
+
+    Optional<Member> findByLogInIdAndResign(String logInId, boolean resignYn);
+
+    List<Member> findByLogInId(String logInId);
 }
